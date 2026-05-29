@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hogwarts Sorting</title>
+<!-- GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+    }
+body{
+overflow:hidden;
+height:100vh;
+font-family:'Cormorant Garamond', serif;
+background:black;
+    }
+/* BACKGROUND IMAGE */
+.background{
+position:absolute;
+width:100%;
+height:100%;
+background-image:url("hpbg.png");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+z-index:-3;
+    }
+/* DARK OVERLAY */
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:
+linear-gradient(
+rgba(0,0,0,0.45),
+rgba(0,0,0,0.65)
+      );
+backdrop-filter:blur(1px);
+z-index:-2;
+    }
+/* MAGIC FOG */
+.fog{
+position:absolute;
+width:100%;
+height:100%;
+background:
+linear-gradient(
+      to bottom,
+rgba(31,20,51,0.5),
+transparent,
+black
+      );
+z-index:-1;
+    }
+/* MAIN CONTAINER */
+.container{
+width:100%;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 60px;
+position:relative;
+    }
+/* LEFT OWL */
+.owl-section{
+width:30%;
+position:relative;
+display:flex;
+justify-content:center;
+    }
+.owl-wrapper{
+position:relative;
+display:inline-block;
+margin-top:2cm;
+    }
+.owl{
+width:240px;
+display:block;
+animation:float 5s ease-in-out infinite;
+filter:drop-shadow(
+0 0 35px rgba(255,255,255,0.25)
+      );
+    }
+/* S */
+.eyes{
+position:absolute;
+top:400px;
+left:500px;
+display:flex;
+gap:38px;
+    }
+.eye{
+width:70px;
+height:70px;
+background:#fff;
+border-radius:50%;
+position:relative;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:inset 0 0 0 1px rgba(0,0,0,0.12);
+    }
+.pupil{
+width:24px;
+height:24px;
+background:#000;
+border-radius:50%;
+position:absolute;
+transition:transform 0.05s ease-out;
+    }
+/* CENTER SECTION */
+.center{
+text-align:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+flex:1;
+    }
+.logo{
+width:260px;
+margin-bottom:40px;
+animation:logoFloat 6s ease-in-out infinite;
+filter:drop-shadow(
+0 0 30px rgba(255,255,255,0.3)
+      );
+    }
+/* START BUTTON */
+.start-btn{
+padding:18px 48px;
+border-radius:999px;
+border:1px solid #eadcff;
+background:
+rgba(242,231,255,0.18);
+color:#fff7ed;
+font-size:18px;
+letter-spacing:4px;
+font-family:'Cinzel', serif;
+cursor:pointer;
+backdrop-filter:blur(10px);
+transition:0.5s;
+box-shadow:
+0 0 20px rgba(255,255,255,0.1);
+margin-top:30px;
+z-index:50;
+    }
+.start-btn:hover{
+transform:scale(1.05);
+background:
+rgba(234,220,255,0.35);
+box-shadow:
+0 0 40px rgba(234,220,255,0.5);
+    }
+/* LETTER */
+.letter-section{
+width:30%;
+display:flex;
+justify-content:flex-end;
+    }
+.letter{
+width:260px;
+cursor:pointer;
+animation:letterFloat 7s ease-in-out infinite;
+transition:0.5s;
+filter:drop-shadow(
+0 0 35px rgba(255,255,255,0.15)
+      );
+    }
+.letter:hover{
+transform:scale(1.08);
+    }
+/* FLOAT ANIMATION */
+@keyframes float{
+0%{
+transform:translateY(0px);
+      }
+50%{
+transform:translateY(-12px);
+      }
+100%{
+transform:translateY(0px);
+      }
+    }
+/* LOGO FLOAT */
+@keyframes logoFloat{
+0%{
+transform:translateY(0px);
+      }
+50%{
+transform:translateY(-16px);
+      }
+100%{
+transform:translateY(0px);
+      }
+    }
+/* LETTER FLOAT */
+@keyframes letterFloat{
+0%{
+transform:
+translateY(0px)
+rotate(-3deg);
+      }
+50%{
+transform:
+translateY(-14px)
+rotate(3deg);
+      }
+100%{
+transform:
+translateY(0px)
+rotate(-3deg);
+      }
+    }
+/* FALLING ENVELOPES */
+#envelope-container{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+z-index:1;
+    }
+.falling-envelope{
+position:absolute;
+top:-60px;
+width:35px;
+opacity:0.85;
+animation:fall linear forwards;
+    }
+@keyframes fall{
+0%{
+transform:
+translateY(-60px)
+translateX(0px)
+rotate(0deg);
+      }
+25%{
+transform:
+translateY(25vh)
+translateX(-20px)
+rotate(90deg);
+      }
+50%{
+transform:
+translateY(50vh)
+translateX(20px)
+rotate(180deg);
+      }
+75%{
+transform:
+translateY(75vh)
+translateX(-15px)
+rotate(270deg);
+      }
+100%{
+transform:
+translateY(110vh)
+translateX(15px)
+rotate(360deg);
+      }
+    }
+</style>
+</head>
+<body>
+<!-- BACKGROUND -->
+<div class="background"></div>
+<!-- OVERLAY -->
+<div class="overlay"></div>
+<!-- FOG -->
+<div class="fog"></div>
+<!-- MAIN CONTENT -->
+<div class="container">
+<!-- LEFT OWL -->
+<div class="owl-section">
+<div class="owl-wrapper">
+    <a href="pet.html" title="Choose your pet">
+        <img src="owl.png" class="owl" alt="Owl">
+    </a>
+<div class="eyes">
+<div class="eye"><div class="pupil"></div></div>
+<div class="eye"><div class="pupil"></div></div>
+</div>
+</div>
+</div>
+<!-- CENTER -->
+<div class="center">
+<img
+src="logo.png"
+class="logo"
+alt="Hogwarts Logo">
+<a href="sorting.html" class="start-btn">
+        BEGIN THE SORTING
+</a>
+</div>
+<!-- RIGHT LETTER -->
+<div class="letter-section">
+<a href="english.html" target="_blank" rel="noopener noreferrer" title="Open letter page">
+<img
+src="en.png"
+class="letter"
+alt="Hogwarts Letter">
+</a>
+</div>
+</div>
+<div id="envelope-container"></div>
+<!-- BACKGROUND AUDIO -->
+<audio id="bg-music" autoplay loop>
+<source src="hp.mp3" type="audio/mpeg">
+</audio>
+<!-- MUTE BUTTON -->
+<button id="mute-btn" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background: rgba(234, 220, 255, 0.25);
+    color: #fff7ed;
+    border: 1px solid #eadcff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    transition: 0.3s;
+  ">🔊 Mute</button>
+<!-- JAVASCRIPT -->
+<script>
+document.addEventListener("mousemove", (e) => {
+const pupils = document.querySelectorAll(".pupil");
+pupils.forEach((pupil) => {
+const eye = pupil.parentElement;
+const rect = eye.getBoundingClientRect();
+const eyeX = rect.left + rect.width / 2;
+const eyeY = rect.top + rect.height / 2;
+const angle = Math.atan2(
+e.clientY - eyeY,
+e.clientX - eyeX
+        );
+const radius = 8;
+const x = Math.cos(angle) * radius;
+const y = Math.sin(angle) * radius;
+pupil.style.transform =
+`translate(${x}px, ${y}px)`;
+      });
+    });
+// FALLING HOGWARTS LETTERS
+const envelopeContainer =
+document.getElementById("envelope-container");
+function createEnvelope(){
+const envelope =
+document.createElement("img");
+envelope.src = "minien.png";
+envelope.classList.add(
+"falling-envelope"
+      );
+envelope.style.left =
+Math.random() * window.innerWidth + "px";
+envelope.style.width =
+        (20 + Math.random() * 35) + "px";
+envelope.style.animationDuration =
+        (8 + Math.random() * 10) + "s";
+envelope.style.opacity =
+0.5 + Math.random() * 0.5;
+envelopeContainer.appendChild(
+envelope
+      );
+setTimeout(() => {
+envelope.remove();
+      }, 18000);
+    }
+// CREATE LETTERS CONTINUOUSLY
+setInterval(createEnvelope, 300);
+// INITIAL BURST
+for(let i = 0; i < 20; i++){
+setTimeout(() => {
+createEnvelope();
+      }, i * 100);
+    }
+// BACKGROUND AUDIO CONTROL
+const bgMusic = document.getElementById("bg-music");
+const muteBtn = document.getElementById("mute-btn");
+// Set a default volume and ensure element exists
+if (bgMusic) {
+bgMusic.volume = 0.5;
+    }
+// Keep a state in sync with the element's muted property
+let isMuted = bgMusic ? bgMusic.muted : false;
+// Initialize mute button label
+if (muteBtn) {
+muteBtn.textContent = isMuted ? "🔇 Unmute" : "🔊 Mute";
+    }
+// Attempt to play audio on page load; if autoplay is blocked, wait for user gesture
+if (bgMusic) {
+bgMusic.play().catch(() => {
+document.addEventListener("click", () => {
+if (!bgMusic.muted) {
+bgMusic.play().catch(() => {});
+          }
+        }, { once: true });
+      });
+    }
+// Mute button toggles the element's muted property (safer than pause/play)
+if (muteBtn) {
+muteBtn.addEventListener("click", () => {
+if (!bgMusic) return;
+bgMusic.muted = !bgMusic.muted;
+isMuted = bgMusic.muted;
+if (isMuted) {
+muteBtn.textContent = "🔇 Unmute";
+        } else {
+muteBtn.textContent = "🔊 Mute";
+bgMusic.play().catch(() => {});
+        }
+      });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hogwarts Sorting Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;
+      font-family:'Cormorant Garamond', serif;
+      background:#09020f;
+      color:#f3ebdf;
+      padding:20px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:url('hpbg.png');
+      background-size:cover;
+      background-position:center;
+      opacity:0.12;
+      z-index:-2;
+    }
+    body::after{
+      content:'';
+      position:fixed;
+      inset:0;
+      background:radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 35%),
+                  linear-gradient(180deg, rgba(0,0,0,0.38), rgba(0,0,0,0.9));
+      z-index:-1;
+    }
+    .page{
+      width:min(980px,100%);
+      background:rgba(7,5,17,0.92);
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:24px;
+      box-shadow:0 32px 80px rgba(0,0,0,0.35);
+      padding:34px 36px 42px;
+    }
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:24px;
+    }
+    .topbar h1{
+      font-family:'Cinzel', serif;
+      font-size:2rem;
+      letter-spacing:2px;
+      line-height:1.1;
+    }
+    .topbar a{
+      color:#f7e7d2;
+      background:rgba(255,255,255,0.08);
+      text-decoration:none;
+      padding:10px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.16);
+      transition:background 0.2s;
+    }
+    .topbar a:hover{background:rgba(255,255,255,0.18);}
+    .instructions{
+      margin-bottom:28px;
+      font-size:1rem;
+      line-height:1.8;
+      color:#d8c7b1;
+    }
+    form{
+      display:grid;
+      gap:24px;
+    }
+    .question{
+      background:rgba(255,255,255,0.05);
+      padding:22px 22px 18px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+    .question h2{
+      font-size:1rem;
+      margin-bottom:14px;
+      color:#fff;
+    }
+    .choices{
+      display:grid;
+      gap:12px;
+    }
+    label{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:14px 16px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.03);
+      cursor:pointer;
+      transition:transform 0.2s, background 0.2s;
+    }
+    label:hover{transform:translateX(3px);background:rgba(255,255,255,0.08);}
+    input[type="radio"]{
+      accent-color:#cfa86d;
+    }
+    .submit-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:10px;
+    }
+    .submit-btn{
+      border:none;
+      background:#d9b77c;
+      color:#1b0f10;
+      padding:16px 28px;
+      border-radius:999px;
+      font-family:'Cinzel', serif;
+      font-size:1rem;
+      cursor:pointer;
+      transition:transform 0.2s, background 0.2s;
+    }
+    .submit-btn:hover{transform:scale(1.02);background:#f0d3a4;}
+    .result{
+      margin-top:28px;
+      padding:26px 24px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.14);
+      border-radius:18px;
+      min-height:120px;
+    }
+    .result h2{
+      margin-bottom:12px;
+      font-size:1.4rem;
+    }
+    .result p{line-height:1.8;}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <h1>Hogwarts Sorting Quiz</h1>
+      <a href="index.html">Back to Home</a>
+    </div>
+    <div class="instructions">
+      Choose one option for each question, then submit to reveal a randomly assigned Hogwarts house. Your answers are kept just for fun.
+    </div>
+    <form id="sorting-form">
+      <div class="question">
+        <h2>1. When reflecting on your life's direction, which thought drives you more?</h2>
+        <div class="choices">
+          <label><input type="radio" name="q1" value="A" required> A) The fear of unfulfilled potential.</label>
+          <label><input type="radio" name="q1" value="B"> B) The fear of making the wrong choices and causing regret.</label>
+        </div>
+      </div>
+      <div class="question">
+        <h2>2. If you could permanently secure one of these states of being, which would you choose?</h2>
+        <div class="choices">
+          <label><input type="radio" name="q2" value="A" required> A) Perfect internal peace, regardless of chaotic external circumstances.</label>
+          <label><input type="radio" name="q2" value="B"> B) Complete control over your external circumstances, regardless of internal anxiety.</label>
+        </div>
+      </div>
+      <div class="question">
+        <h2>3. When faced with a profound personal crisis, what is your immediate psychological instinct?</h2>
+        <div class="choices">
+          <label><input type="radio" name="q3" value="A" required> A) To retreat inward and process the emotions entirely alone.</label>
+          <label><input type="radio" name="q3" value="B"> B) To seek out a trusted person to externalize and talk through the experience.</label>
+        </div>
+      </div>
+      <div class="question">
+        <h2>4. Which truth is harder for you to accept about existence?</h2>
+        <div class="choices">
+          <label><input type="radio" name="q4" value="A" required> A) That we are ultimately entirely alone in our own minds.</label>
+          <label><input type="radio" name="q4" value="B"> B) That we are deeply dependent on others for our happiness.</label>
+        </div>
+      </div>
+      <div class="question">
+        <h2>5. In your closest relationships, which form of validation matters more to you?</h2>
+        <div class="choices">
+          <label><input type="radio" name="q5" value="A" required> A) Being profoundly understood for who you are, flaws included.</label>
+          <label><input type="radio" name="q5" value="B"> B) Being deeply appreciated for what you contribute and achieve.</label>
+        </div>
+      </div>
+      <div class="question">
+        <h2>6. Which statement aligns more closely with your worldview?</h2>
+        <div class="choices">
+          <label><input type="radio" name="q6" value="A" required> A) Human nature is inherently flawed but capable of great rescue through effort.</label>
+          <label><input type="radio" name="q6" value="B"> B) Human nature is inherently good but easily corrupted by external systems.</label>
+        </div>
+      </div>
+      <div class="question">
+        <h2>7. When you think about your legacy, what do you hope people remember most?</h2>
+        <div class="choices">
+          <label><input type="radio" name="q7" value="A" required> A) The tangible impact and disruptions you made in your field or community.</label>
+          <label><input type="radio" name="q7" value="B"> B) The specific way you made individual people feel in your daily life.</label>
+        </div>
+      </div>
+      <div class="question">
+        <h2>8. If you had to choose how to live out your purpose, which sounds truer to you?</h2>
+        <div class="choices">
+          <label><input type="radio" name="q8" value="A" required> A) Seeking absolute truth and knowledge, even if it brings discomfort.</label>
+          <label><input type="radio" name="q8" value="B"> B) Seeking harmony and connection, even if it requires compromising on absolute certainty.</label>
+        </div>
+      </div>
+      <div class="question">
+        <h2>9. What causes you more profound existential discomfort?</h2>
+        <div class="choices">
+          <label><input type="radio" name="q9" value="A" required> A) The idea that life has no inherent meaning, and we must invent it.</label>
+          <label><input type="radio" name="q9" value="B"> B) The idea that life has a strict, predetermined meaning, and we must discover it.</label>
+        </div>
+      </div>
+      <div class="question">
+        <h2>10. At your core, do you measure a "successful life" by:</h2>
+        <div class="choices">
+          <label><input type="radio" name="q10" value="A" required> A) The depth of the internal transformation and wisdom you acquire.</label>
+          <label><input type="radio" name="q10" value="B"> B) The quality and endurance of the relationships you build.</label>
+        </div>
+      </div>
+      <div class="submit-row">
+        <button type="submit" class="submit-btn">Submit Quiz</button>
+      </div>
+    </form>
+    <div id="result" class="result" hidden></div>
+  </div>
+  <script>
+    const form = document.getElementById('sorting-form');
+    const result = document.getElementById('result');
+    const houses = [
+      {name:'Gryffindor', description:'Bravery, daring, and a courageous heart.'},
+      {name:'Hufflepuff', description:'Loyalty, patience, and a kind spirit.'},
+      {name:'Ravenclaw', description:'Wisdom, curiosity, and creative thinking.'},
+      {name:'Slytherin', description:'Ambition, cunning, and determination.'}
+    ];
+
+    function pickRandomHouse(){
+      const index = Math.floor(Math.random() * houses.length);
+      return houses[index];
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const chosenHouse = pickRandomHouse();
+      result.hidden = false;
+      result.innerHTML = `
+        <h2>Your Hogwarts House Is ${chosenHouse.name}</h2>
+        <p>${chosenHouse.description}</p>
+        <p>Thanks for completing the quiz — Welcome to Hogwarts!</p>
+      `;
+      result.scrollIntoView({behavior:'smooth'});
+    });
+  </script>
+</body>
+</html>

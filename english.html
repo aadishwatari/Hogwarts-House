@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Showcase | Earth Collection</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+  
+  <style>
+    body {
+      background: linear-gradient(135deg, #3f2a1e, #5c4033, #8d6e63);
+      min-height: 100vh;
+    }
+    
+    .giant-card {
+      transition: all 0.5s ease;
+    }
+    
+    .giant-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 30px 60px -15px rgba(139, 69, 19, 0.6);
+    }
+  </style>
+</head>
+<body class="text-white">
+  
+  <!-- Navbar -->
+  <nav class="bg-black/40 backdrop-blur-md border-b border-amber-800/50 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <h1 class="text-3xl font-bold tracking-tight text-amber-100">
+        <span class="text-amber-500">Earth</span> Tone
+      </h1>
+      
+      <a href="index.html" 
+         class="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-6 py-3 rounded-2xl font-medium border border-amber-600/50 hover:border-amber-500 transition-all">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <div class="max-w-6xl mx-auto px-6 py-20">
+    <div class="text-center mb-12">
+      <h2 class="text-5xl font-bold mb-3">Featured Masterpiece</h2>
+      <p class="text-amber-200 text-xl">A moment captured in warm tones</p>
+    </div>
+
+    <!-- Single Giant Image Card -->
+    <div class="giant-card bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden border border-amber-700/30 shadow-2xl">
+      <div class="relative h-[75vh] min-h-[500px]">
+        <!-- Replace this URL with your image -->
+        <img id="mainImage" 
+             src="https://via.placeholder.com/1600x900/5c4033/ffffff?text=Your+Giant+Image+Here" 
+             alt="Featured Image" 
+             class="w-full h-full object-cover">
+        
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+        
+        <!-- Content Overlay -->
+        <div class="absolute bottom-0 left-0 right-0 p-10 md:p-16">
+          <div class="max-w-2xl">
+            <h3 class="text-4xl md:text-5xl font-bold mb-4">Your Image Title</h3>
+            <p class="text-amber-100 text-lg md:text-xl leading-relaxed">
+              Add a beautiful description or caption for your image here. 
+              This area can contain details, story, or any text you want.
+            </p>
+            
+            <div class="mt-8 flex gap-4">
+              <button class="bg-amber-600 hover:bg-amber-700 px-8 py-3 rounded-2xl font-medium transition-all">
+                Learn More
+              </button>
+              <button class="border border-amber-400/70 hover:border-amber-400 px-8 py-3 rounded-2xl font-medium transition-all">
+                Download
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-black/50 py-8 text-center text-amber-300/80">
+    <p>Made with 🤎 | Warm Brown Theme</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pets allowed in Hogwarts</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+
+<!-- Witchy Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    background: linear-gradient(135deg, #2e0a4d, #4c1d95, #3b0764);
+    min-height: 100vh;
+    font-family: 'Playfair Display', serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+}
+
+.card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 25px 50px -12px rgb(76 29 149 / 0.6);
+}
+
+.overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+}
+
+/* Magical Icy Horse */
+#magical-horse {
+    position: fixed;
+    font-size: 4.5rem;
+    z-index: 10;
+    pointer-events: none;
+    filter: drop-shadow(0 0 20px #67e8f9);
+    opacity: 0;
+    transition: all 0.8s ease-out;
+    user-select: none;
+}
+
+#magical-horse.visible {
+    opacity: 0.75;
+}
+
+/* Icy glow animation */
+@keyframes icyPulse {
+    0%, 100% { filter: drop-shadow(0 0 15px #67e8f9); }
+    50% { filter: drop-shadow(0 0 35px #a5f3fc); }
+}
+
+#magical-horse {
+    animation: icyPulse 2s infinite;
+}
+</style>
+</head>
+<body class="text-white">
+
+<!-- Magical Icy Horse -->
+<div id="magical-horse">❄️🐴</div>
+
+<!-- Navbar -->
+<nav class="bg-black/40 backdrop-blur-md border-b border-purple-500/30 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+<h1 class="text-4xl font-bold tracking-wider">
+    <span class="text-purple-400">Pets</span> in Hogwarts
+</h1>
+<a href="index.html" class="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-all px-6 py-3 rounded-2xl font-medium border border-purple-400/40 hover:border-purple-400">
+    <i class="fas fa-arrow-left"></i>
+    Back to Home
+</a>
+</div>
+</nav>
+
+<div class="max-w-7xl mx-auto px-6 py-16">
+<div class="text-center mb-12">
+    <h2 class="text-5xl font-bold mb-4 tracking-wider text-purple-100">
+        Dracō dormiēns nunquam titillandus
+    </h2>
+    <p class="text-purple-200 text-xl max-w-2xl mx-auto italic">
+        "Never tickle a sleeping dragon"
+    </p>
+</div>
+
+<!-- Image Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <!-- Cards remain the same -->
+    <div class="card bg-white/10 backdrop-blur-lg rounded-3xl overflow-hidden border border-purple-400/30">
+        <div class="relative h-80">
+            <img id="img1" src="hedwig.png" alt="Owls" class="w-full h-full object-cover">
+            <div class="overlay absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0 p-6 w-full">
+                <h3 class="text-3xl font-semibold mb-1">Owls</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="card bg-white/10 backdrop-blur-lg rounded-3xl overflow-hidden border border-purple-400/30">
+        <div class="relative h-80">
+            <img id="img2" src="cat.png" alt="Cats" class="w-full h-full object-cover">
+            <div class="overlay absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0 p-6 w-full">
+                <h3 class="text-3xl font-semibold mb-1">Cats</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="card bg-white/10 backdrop-blur-lg rounded-3xl overflow-hidden border border-purple-400/30">
+        <div class="relative h-80">
+            <img id="img3" src="toad.png" alt="Toads" class="w-full h-full object-cover">
+            <div class="overlay absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0 p-6 w-full">
+                <h3 class="text-3xl font-semibold mb-1">Toads</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="card bg-white/10 backdrop-blur-lg rounded-3xl overflow-hidden border border-purple-400/30">
+        <div class="relative h-80">
+            <img id="img4" src="crow.png" alt="Crows" class="w-full h-full object-cover">
+            <div class="overlay absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0 p-6 w-full">
+                <h3 class="text-3xl font-semibold mb-1">Crows</h3>
+                <p class="text-purple-300 text-sm">Special Permission Required</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+// Random Icy Horse Jumper
+const horse = document.getElementById('magical-horse');
+
+function jumpHorse() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 150);
+    
+    horse.style.left = `${x}px`;
+    horse.style.top = `${y}px`;
+    
+    horse.classList.add('visible');
+    
+    // Random duration between jumps
+    setTimeout(() => {
+        horse.classList.remove('visible');
+    }, 2200);
+}
+
+// Start the magic
+setInterval(() => {
+    if (Math.random() > 0.4) { // Sometimes skip for natural feel
+        jumpHorse();
+    }
+}, 2800);
+
+// Initial jump
+setTimeout(jumpHorse, 800);
+</script>
+
+</body>
+</html>
