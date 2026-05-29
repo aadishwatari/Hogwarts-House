@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hogwarts Sorting</title>
-<!-- GOOGLE FONTS -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@ height:100vh;
 font-family:'Cormorant Garamond', serif;
 background:black;
     }
-/* BACKGROUND IMAGE */
+
 .background{
 position:absolute;
 width:100%;
@@ -31,7 +31,7 @@ background-position:center;
 background-repeat:no-repeat;
 z-index:-3;
     }
-/* DARK OVERLAY */
+
 .overlay{
 position:absolute;
 width:100%;
@@ -44,7 +44,7 @@ rgba(0,0,0,0.65)
 backdrop-filter:blur(1px);
 z-index:-2;
     }
-/* MAGIC FOG */
+
 .fog{
 position:absolute;
 width:100%;
@@ -58,7 +58,7 @@ black
       );
 z-index:-1;
     }
-/* MAIN CONTAINER */
+
 .container{
 width:100%;
 height:100vh;
@@ -68,7 +68,7 @@ justify-content:space-between;
 padding:0 60px;
 position:relative;
     }
-/* LEFT OWL */
+
 .owl-section{
 width:30%;
 position:relative;
@@ -88,7 +88,7 @@ filter:drop-shadow(
 0 0 35px rgba(255,255,255,0.25)
       );
     }
-/* S */
+
 .eyes{
 position:absolute;
 top:400px;
@@ -116,7 +116,7 @@ border-radius:50%;
 position:absolute;
 transition:transform 0.05s ease-out;
     }
-/* CENTER SECTION */
+
 .center{
 text-align:center;
 display:flex;
@@ -133,7 +133,7 @@ filter:drop-shadow(
 0 0 30px rgba(255,255,255,0.3)
       );
     }
-/* START BUTTON */
+
 .start-btn{
 padding:18px 48px;
 border-radius:999px;
@@ -159,7 +159,7 @@ rgba(234,220,255,0.35);
 box-shadow:
 0 0 40px rgba(234,220,255,0.5);
     }
-/* LETTER */
+
 .letter-section{
 width:30%;
 display:flex;
@@ -177,7 +177,7 @@ filter:drop-shadow(
 .letter:hover{
 transform:scale(1.08);
     }
-/* FLOAT ANIMATION */
+
 @keyframes float{
 0%{
 transform:translateY(0px);
@@ -189,7 +189,7 @@ transform:translateY(-12px);
 transform:translateY(0px);
       }
     }
-/* LOGO FLOAT */
+
 @keyframes logoFloat{
 0%{
 transform:translateY(0px);
@@ -201,7 +201,7 @@ transform:translateY(-16px);
 transform:translateY(0px);
       }
     }
-/* LETTER FLOAT */
+
 @keyframes letterFloat{
 0%{
 transform:
@@ -219,7 +219,7 @@ translateY(0px)
 rotate(-3deg);
       }
     }
-/* FALLING ENVELOPES */
+
 #envelope-container{
 position:fixed;
 top:0;
@@ -272,15 +272,15 @@ rotate(360deg);
 </style>
 </head>
 <body>
-<!-- BACKGROUND -->
+
 <div class="background"></div>
-<!-- OVERLAY -->
+
 <div class="overlay"></div>
-<!-- FOG -->
+
 <div class="fog"></div>
-<!-- MAIN CONTENT -->
+
 <div class="container">
-<!-- LEFT OWL -->
+
 <div class="owl-section">
 <div class="owl-wrapper">
     <a href="pet.html" title="Choose your pet">
@@ -292,7 +292,7 @@ rotate(360deg);
 </div>
 </div>
 </div>
-<!-- CENTER -->
+
 <div class="center">
 <img
 src="logo.png"
@@ -302,7 +302,7 @@ alt="Hogwarts Logo">
         BEGIN THE SORTING
 </a>
 </div>
-<!-- RIGHT LETTER -->
+
 <div class="letter-section">
 <a href="english.html" target="_blank" rel="noopener noreferrer" title="Open letter page">
 <img
@@ -313,11 +313,11 @@ alt="Hogwarts Letter">
 </div>
 </div>
 <div id="envelope-container"></div>
-<!-- BACKGROUND AUDIO -->
+
 <audio id="bg-music" autoplay loop>
 <source src="hp.mp3" type="audio/mpeg">
 </audio>
-<!-- MUTE BUTTON -->
+
 <button id="mute-btn" style="
     position: fixed;
     bottom: 20px;
@@ -333,7 +333,7 @@ alt="Hogwarts Letter">
     z-index: 100;
     transition: 0.3s;
   ">🔊 Mute</button>
-<!-- JAVASCRIPT -->
+
 <script>
 document.addEventListener("mousemove", (e) => {
 const pupils = document.querySelectorAll(".pupil");
